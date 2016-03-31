@@ -1,6 +1,6 @@
 ---
 layout: page
-description: "Love R, Love python, Love data science."
+description: "一生想做浪漫极客"
 ---
 
 {% for post in paginator.posts %}
