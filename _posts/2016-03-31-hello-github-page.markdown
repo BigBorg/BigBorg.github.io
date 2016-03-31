@@ -12,6 +12,6 @@ catalog: true
   
 打算翻[神经网络与深度学习](www.neuralnetworksanddeeplearning.com)这本电子书，不知道可不可以当翻译实践，就算不能也可以边翻边学习，所以特地来开个技术博客，方便分享。同时也可以整理整理平时学数据科学和机器学习的笔记，方便查阅，省得笔记到处分散。
   
-感谢[Hux](https://github.com/Huxpro/huxpro.github.io)的博客模版，留了他两篇文章。开源万岁，哈哈。
+感谢[Hux](https://github.com/Huxpro/huxpro.github.io)的博客模版，留了他两篇文章。
   
-希望能坚持写下去，加油！
+感觉开了博客以后就再也不用担心github的contribution上是空白了，哈哈。希望能坚持写下去，加油！
