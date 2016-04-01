@@ -1,15 +1,15 @@
 ---
 layout: 	post
-title:		'神经网络与深度学习'
-subtitle:	'——关于本书'
-date:		2016-04-01
-author: 	'Borg'
+title:		"神经网络与深度学习"
+subtitle:	"——简介"
+header-img:	"img/post-bg-deeplearning.jpg"
+date:		2016-03-31
+author: 	"Borg"
 catalog:	true
 tags:
-	- 机器学习
-	- 深度学习
-	- 神经网络
-	- 翻译
+    - 神经网络
+    - 深度学习
+    - 翻译
 ---
 《神经网络与深度学习》是一本免费在线电子书。本书将覆盖：
   1. 神经网络：由生物学启发而来的算法，使计算机能从观测数据中学习。
@@ -20,4 +20,4 @@ tags:
 ---
 本书由Borg翻译自[Michael A. Nielsen, "Neural Networks and
 Deep Learning", Determination Press, 2015](http://neuralnetworksanddeeplearning.com/about.html)，引用请注明出处。  
-![证书](http://i.creativecommons.org/l/by-nc/3.0/88x31.png)本书受[署名-非商业性使用 3.0 Unported](http://creativecommons.org/licenses/by-nc/3.0/legalcode)证书保护，可自由复制、分享和演绎，但不得用于商业用途。
+本书受[署名-非商业性使用 3.0 Unported](http://creativecommons.org/licenses/by-nc/3.0/legalcode)证书保护，可自由复制、分享和演绎，但不得用于商业用途。![证书](http://i.creativecommons.org/l/by-nc/3.0/88x31.png)

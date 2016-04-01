@@ -1,15 +1,15 @@
 ---
 layout: 	post
-title:		'神经网络与深度学习'
-subtitle:	'——本书关于'
+title:		"神经网络与深度学习"
+subtitle:	"——本书关于"
+header-img:	"img/post-bg-deeplearning.jpg"
 date:		2016-04-01
-author: 	'Borg'
+author: 	"Borg"
 catalog:	true
 tags:
-	- 机器学习
-	- 深度学习
-	- 神经网络
-	- 翻译
+    - 神经网络
+    - 深度学习
+    - 翻译
 ---
 # 本书关于
 神经网络是目前最优美的算法之一。在传统的编程方法中，我们告诉计算机具体该干什么，把大的问题分解成许多小问题，明确地给计算机指示任务，让计算机很容易地解决。神经网络则与之不同，我们不需要告诉计算机如何去解决问题，而是计算机从观测数据中学习，自己找出问题的解决方案。  
@@ -28,4 +28,4 @@ tags:
 ---
 本书由Borg翻译自[Michael A. Nielsen, "Neural Networks and
 Deep Learning", Determination Press, 2015](http://neuralnetworksanddeeplearning.com/about.html)，引用请注明出处。  
-![证书](http://i.creativecommons.org/l/by-nc/3.0/88x31.png)本书受[署名-非商业性使用 3.0 Unported](http://creativecommons.org/licenses/by-nc/3.0/legalcode)证书保护，可自由复制、分享和演绎，但不得用于商业用途。
+本书受[署名-非商业性使用 3.0 Unported](http://creativecommons.org/licenses/by-nc/3.0/legalcode)证书保护，可自由复制、分享和演绎，但不得用于商业用途。![证书](http://i.creativecommons.org/l/by-nc/3.0/88x31.png)
