@@ -12,6 +12,7 @@ tags:
     - 笔记
 ---
 # 如何评估一个回归模型  
+
 ## loss function
 首先定义loss function，即预测错误带来的损失，通常使用y-yhat的绝对值或者平方。但不绝对，比如在预测放假时如果估值过高，则可能完全卖不出去，带来的损失更大，因此可以定义loss function使估值过高带来的loss比估值过低带来的loss更大。
 ![loss function](http://7xshuq.com2.z0.glb.clouddn.com/blog/img/figure/coursera/ml-washington/wk3/1.png)   
@@ -19,7 +20,8 @@ tags:
 然后看到一句很有意思的话：
 ![quote](http://7xshuq.com2.z0.glb.clouddn.com/blog/img/figure/coursera/ml-washington/wk3/2.png)  
 
-## training error, generalization error, test error
+## training error, generalization error, test error  
+
 ### training error
 training error的计算方式：
 ![quote](http://7xshuq.com2.z0.glb.clouddn.com/blog/img/figure/coursera/ml-washington/wk3/3.png)  
@@ -37,7 +39,7 @@ generalization error的定义，注意对于每一对(x,y)要乘上相应的概�
 那么实际上由于现实生活中的房屋不能全部调查，所以generalization error是没法计算的。不过理论上，随着模型复杂度增加，首先呈减小趋势，随后由于overfitting，generlization error又增加。
 ![quote](http://7xshuq.com2.z0.glb.clouddn.com/blog/img/figure/coursera/ml-washington/wk3/8.png)  
 
-### test
+### test error
 test error就不用说了，跟training error一样，只是用test data计算。由于generalization error无法计算，所以可以用test error估计。由于是估计，所以会有偏差，于是就是沿着generalization error上下波动了。
 ![quote](http://7xshuq.com2.z0.glb.clouddn.com/blog/img/figure/coursera/ml-washington/wk3/9.png)  
 
