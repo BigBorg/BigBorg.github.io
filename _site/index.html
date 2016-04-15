@@ -173,6 +173,59 @@
             ">
     			
 <div class="post-preview">
+    <a href="/2016/04/15/note-ml-course2-week4/">
+        <h2 class="post-title">
+            Regularization(Ridged Regression) & Cross Validation
+        </h2>
+        
+        <h3 class="post-subtitle">
+            Note: ml regression week4
+        </h3>
+        
+        <div class="post-content-preview">
+            Regularization
+上周已经讲了overfitting，那么当我们所有的数据量特别大的时候，即使有很多个特征模型也很难overfit。
+
+
+当模型overfit的时候，weights会变得很大，因此如果各个特征都很重要不可去除，可以通过减小weights来减弱overfitting的程度。那么如何衡量w是否过大？可以用w的绝对值相加或者用w的平方相加，注意不能直接把w相加，因为w可...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Borg on April 15, 2016
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2016/04/10/note-ml-course2-week3/">
+        <h2 class="post-title">
+            评估模型
+        </h2>
+        
+        <h3 class="post-subtitle">
+            Note: ml regression week3
+        </h3>
+        
+        <div class="post-content-preview">
+            如何评估一个回归模型
+
+loss function
+首先定义loss function，即预测错误带来的损失，通常使用y-yhat的绝对值或者平方。但不绝对，比如在预测放假时如果估值过高，则可能完全卖不出去，带来的损失更大，因此可以定义loss function使估值过高带来的loss比估值过低带来的loss更大。
+
+
+然后看到一句很有意思的话：
+
+
+training error, gene...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Borg on April 10, 2016
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2016/04/02/broken-line-regression/">
         <h2 class="post-title">
             折线回归模型
@@ -206,7 +259,7 @@ splineTerms&lt;-sapply(knots,function(knot) ...
 <hr>
 
 <div class="post-preview">
-    <a href="/2016/04/01/note-ml-course1-week2/">
+    <a href="/2016/04/01/note-ml-course2-week2/">
         <h2 class="post-title">
             多变量回归模型
         </h2>
@@ -232,7 +285,7 @@ splineTerms&lt;-sapply(knots,function(knot) ...
 <hr>
 
 <div class="post-preview">
-    <a href="/2016/04/01/note-ml-course1-week1/">
+    <a href="/2016/04/01/note-ml-course2-week1/">
         <h2 class="post-title">
             简单回归模型
         </h2>
@@ -251,96 +304,6 @@ splineTerms&lt;-sapply(knots,function(knot) ...
     </a>
     <p class="post-meta">
         Posted by Borg on April 1, 2016
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2016/04/01/neuralnetworksanddeeplearning-what-is-this-book-about.markdown/">
-        <h2 class="post-title">
-            神经网络与深度学习
-        </h2>
-        
-        <h3 class="post-subtitle">
-            ——本书关于
-        </h3>
-        
-        <div class="post-content-preview">
-            # 本书关于
-神经网络是目前最优美的算法之一。在传统的编程方法中，我们告诉计算机具体该干什么，把大的问题分解成许多小问题，明确地给计算机指示任务，让计算机很容易地解决。神经网络则与之不同，我们不需要告诉计算机如何去解决问题，而是计算机从观测数据中学习，自己找出问题的解决方案。  
-自动地从数据中学习听起来十分有前景。但是2006年以前，除了能够解决一些特殊问题外，我们还不知道如何训练神经网络...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Borg on April 1, 2016
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2016/04/01/Neural-Networks-and-Deep-Learning-On-exercises-and-problems.markdown/">
-        <h2 class="post-title">
-            神经网络与深度学习
-        </h2>
-        
-        <h3 class="post-subtitle">
-            ——训练和问题
-        </h3>
-        
-        <div class="post-content-preview">
-            # 训练和问题
-在技术书籍中，作者劝告读者一定要做书中的训练和问题是很常见的。当我读到这样的告诫时，我总会觉得很奇怪。如果我不做训练和问题，难道会有不好的事情发生吗？当然不会。我会有更多的时间，但这样就无法深刻地理解书本。有时，这样做是值得的。有时则不是。  
-那么在这本书中有哪些训练和问题是值得做的呢？我建议你去尝试完成书中大部分的训练，而对于问题就不要全做。  
-训练用来检验你是否理解基...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Borg on April 1, 2016
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2016/03/31/neuralnetworksanddeeplearning.markdown/">
-        <h2 class="post-title">
-            神经网络与深度学习
-        </h2>
-        
-        <h3 class="post-subtitle">
-            ——简介
-        </h3>
-        
-        <div class="post-content-preview">
-            《神经网络与深度学习》是一本免费在线电子书。本书将覆盖：
-  1. 神经网络：由生物学启发而来的算法，使计算机能从观测数据中学习。
-  2. 深度学习：在神经网络学习中使用的一项强大的技术。  
-神经网络和深度学习为许多问题提供了目前最好的解决方案，如图像识别，语音识别，自然语言识别等。本书将覆盖神经网络和深度学习背后的许多核心概念。  
-关于本书中提到的方法，可以到[原文](http://...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Borg on March 31, 2016
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2016/03/31/hello-github-page.markdown/">
-        <h2 class="post-title">
-            Hello Github Page
-        </h2>
-        
-        <h3 class="post-subtitle">
-            New to Github Page
-        </h3>
-        
-        <div class="post-content-preview">
-            # Hello World  
-第一次在rstudio和ipython notebook外写markdown，好棒的感觉。博客部署过程中碰到好多问题，搞了半天才搞好。首先是ruby的问题，Ubuntu的apt-get装的ruby默认是1.9.3的，即使指定装ruby2.0也是装的1.9.3和2.0两个版本，并且默认使用的是1.9.3的版本。刚开始没注意到，导致后面安装jekyll-pagin...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Borg on March 31, 2016
     </p>
 </div>
 <hr>
@@ -438,41 +401,27 @@ Hux 的 Blog 就这么开通了。
                             
                         
                             
-                                <a href="/tags/#神经网络" title="神经网络" rel="3">
-                                    神经网络
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#深度学习" title="深度学习" rel="3">
-                                    深度学习
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#翻译" title="翻译" rel="3">
-                                    翻译
-                                </a>
-                            
-                        
-                            
                                 <a href="/tags/#机器学习" title="机器学习" rel="2">
                                     机器学习
                                 </a>
                             
                         
                             
-                                <a href="/tags/#回归分析" title="回归分析" rel="3">
+                                <a href="/tags/#回归分析" title="回归分析" rel="5">
                                     回归分析
                                 </a>
                             
                         
                             
-                                <a href="/tags/#笔记" title="笔记" rel="3">
+                                <a href="/tags/#笔记" title="笔记" rel="5">
                                     笔记
                                 </a>
                             
                         
+                            
+                                <a href="/tags/#数据分析" title="数据分析" rel="3">
+                                    数据分析
+                                </a>
                             
                         
                     </div>
