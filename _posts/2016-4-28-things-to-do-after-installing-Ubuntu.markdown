@@ -19,13 +19,15 @@ tags:
 ```bash
 sudo apt-get install ubuntu-restricted-extras build-essentials
 ```
+
 # 点击Unity launcher软件图标窗口最小化
 新版功能
 
 ```
 gsettings set org.compiz.unityshell:/org/compiz/profiles/unity/plugins/unityshell/ launcher-minimize-window true
 ```
-#unity-tweak-tool
+
+# unity-tweak-tool
 用于更改主题的，各种个性化，还是很推荐的。
 
 ```
