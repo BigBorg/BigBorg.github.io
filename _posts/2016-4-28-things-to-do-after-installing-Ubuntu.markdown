@@ -54,7 +54,7 @@ false改成true，然后就可以用pppoeconf设置拨号帐号了。
 该项目的apt-get安装方式不可行，因为key下不下来，估计被封了。所以只能下载源码，编译安装，具体项目reademe已经写的很清楚了。最后用的时候注意是ss-local而不是sslocal了。
 
 # R
-首先把R装上，r-core需要添加软件源，还需要key，命令如下
+r-core需要添加软件源，还需要key，命令如下
 
 ```bash
 sudo gedit /etc/apt/sources.list
