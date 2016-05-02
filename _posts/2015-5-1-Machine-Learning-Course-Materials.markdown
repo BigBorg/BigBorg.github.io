@@ -22,6 +22,6 @@ tags:
     **coordinate descent**  
     **k nearest neighbors**  
     **kernel regression**
-    **bias,variance,noise**
+    **bias,variance,noise**  
 真心高质量的课，然而我要专心搞R和考研去了，以后再接着上classification把。
 
