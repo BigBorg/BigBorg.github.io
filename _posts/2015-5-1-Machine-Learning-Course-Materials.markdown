@@ -19,7 +19,7 @@ tags:
     **gradient descent**  
     **ridge regression**  
     **lasso regression**  
-    **cordinate descent**  
+    **coordinate descent**  
     **k nearest neighbors**  
     **kernel regression**
     **bias,variance,noise**
