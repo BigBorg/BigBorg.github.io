@@ -135,6 +135,8 @@ git checkout 3.1.0
 ```
 Again, make sure that you checkout the same version for opencv_contrib  that you did for opencv  above, otherwise you could run into compilation errors.
 
+编译过程中需要下载ippicv_linux_20151201.tgz，如果下载失败，提示hash不匹配的错误信息，可手动下载放到提示信息指定的目录下。
+
 Time to setup the build:  
 
 ```
