@@ -8,7 +8,8 @@ catalog:	true
 tags:
     - 文档
 ---  
-# 归纳各种开发文档，方便查阅
+# 收藏各种开发文档，方便查阅
 
 ## 机器学习  
--[SFrame](https://turi.com/products/create/docs/index.html)
+-[GraphLab](https://turi.com/products/create/docs/index.html)
+-[plotly](https://plot.ly/)
