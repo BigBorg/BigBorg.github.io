@@ -11,5 +11,6 @@ tags:
 # 收藏各种开发文档，方便查阅
 
 ## 机器学习  
--[GraphLab](https://turi.com/products/create/docs/index.html)
--[plotly](https://plot.ly/)
+-[GraphLab](https://turi.com/products/create/docs/index.html)  
+-[plotly](https://plot.ly/)  
+-[scrapy](http://doc.scrapy.org/en/1.0/)
