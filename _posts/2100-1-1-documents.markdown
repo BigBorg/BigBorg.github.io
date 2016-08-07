@@ -13,4 +13,11 @@ tags:
 ## 机器学习  
 -[GraphLab](https://turi.com/products/create/docs/index.html)  
 -[plotly](https://plot.ly/)  
--[scrapy](http://doc.scrapy.org/en/1.0/)
+
+## python爬虫
+-[scrapy](http://doc.scrapy.org/en/1.0/)  
+-[scrapy Chinese tutorial](http://scrapy-chs.readthedocs.io/zh_CN/0.24/intro/tutorial.html)  
+
+## python QT
+-[QT](http://doc.qt.io/)  
+-[PyQt tutorial](http://www.tutorialspoint.com/pyqt/index.htm)  
