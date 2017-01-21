@@ -1,0 +1,87 @@
+---
+layout: 	post
+title:		"Mongodb Week1"
+header-img:	"img/post-bg-deeplearning.jpg"
+date:		2017-01-21
+author: 	"Borg"
+catalog:	true
+tags:
+    - Mongodb
+---
+# Mongodb University Courses Note
+Mongodb University的M101P: MongoDB for Developers与M102: MongoDB for DBAs课程第一周笔记
+[官方文档地址](https://docs.mongodb.com/v3.2/)
+
+# Start Mongod server
+
+```javascript
+sudo service mongod start	# 使用默认设置
+mongod --dbpath datadir		# 需要设置数据路径
+mongo localhost/dbname
+mongo
+```
+
+# mongoimport
+
+```javascript
+mongoimport --db dbname --collection collectionname < file.json/csv/tsv
+```
+
+# insert
+
+```javascript
+show dbs
+use video
+db.movies.insertOne({ "title": "Jaws", "year": 1975, "imdb": "tt0073195", "tags":["tag1","tag2"] });
+db.movies.insertOne({ "title": "Mad Max 2: The Road Warrior", "year": 1981, "imdb": "tt0082694", "nested":{a:1} })
+db.movies.insertOne({ "title": "Raiders of the Lost Ark", "year": 1981, "imdb": "tt0082971" })
+```
+
+# Cursor
+
+```javascript
+var c = db.movies.find({"title":"Jaws"})
+c.hasNext()
+c.next()
+```
+
+# Query
+
+## find
+
+```javascript
+db.movies.find({"title":"Jaws"},{"year":1, "_id":0}) # 第一个参数为请求，第二个参数设置请求的字段，相当于select，key可以不用引号。。。
+db.movies.find().limit(2).skip(1).toArray()
+db.movies.find().pretty()
+db.movies.findOne()
+```
+操作符： $gt, $gte, $lt, $lte, $or, $in, $nin, $not, $type, $exists
+
+```javascript
+db.movies.find({year:{$gte:1980}})
+db.movies.find({tags:{$exists:true}})
+db.movies.find({tags:"tag1"}) # tags字段内包含"tag1"就可
+```
+内嵌文档查找
+
+```javascript
+db.movies.find({"nested.a":1})
+```
+
+## Update
+
+```javascript
+j = db.movies.findOne()
+j.title = "Test"
+db.movies.save(j)
+
+db.movies.updatemany({newkey:val})
+```
+
+## sorting
+
+```javascript
+db.movies.find({year:{$exists:true}}, {year:1,_id:0}).sort({year:1}) # 升序
+db.movies.find({year:{$exists:true}}, {year:1,_id:0}).sort({year:-1}) # 降序
+db.movies.find({year:{$exists:true}}, {year:1,_id:0}).sort({year:1, title:1}) # 多个字段排序
+```
