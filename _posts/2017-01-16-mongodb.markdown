@@ -63,7 +63,7 @@ db.movies.find({tags:{$exists:true}})
 db.movies.find({tags:"tag1"}) # tags字段内包含"tag1"就可
 ```
 内嵌文档查找
-
+句点操作符必须用引号引起key
 ```javascript
 db.movies.find({"nested.a":1})
 ```

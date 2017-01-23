@@ -1,0 +1,137 @@
+---
+layout: 	post
+title:		"Mongodb for Developers: Week2"
+subtitle:	"Mongodb CRUD"
+header-img:	"img/post-bg-deeplearning.jpg"
+date:		2017-01-23
+author: 	"Borg"
+catalog:	true
+tags:
+    - Mongodb
+---
+# Mongodb University Courses Note
+Mongodb University的M101P: MongoDB for Developers与M102: MongoDB for DBAs课程第一周笔记
+[官方文档地址](https://docs.mongodb.com/v3.2/)
+
+# CRUD
+
+## Create
+```javascript
+db.collection.insertOne()
+db.collection.insertMany([ {...},{...} ], {"ordered":false})  # 详细参数见文档，第二个参数可省。Excluding Write Concern errors, ordered operations stop after an error, while unordered operations continue to process any remaining write operations in the queue.
+```
+
+## Retrieve
+```javascript
+db.collection.find({"actors":"Mark Fergus"}) # 查找的结果中actors字段可以为列表，只要包含Mark Fergus即可( Match any element of an array)
+db.collection.find({"actors.0":"Mark Fergus"}) # match the first element of an array
+db.collection.find( {"actors":["Mark Fergus", "Jeff Bridges"]} ) # 查找的结果中actors字段必须包含Mark和Jeff，并且Mark在Jeff前。
+```
+
+### cursors
+游标batch中剩余的文档数
+```javascript
+cur.objsLeftInBatch()
+```
+
+### projection
+只返回需要的字段，Week1已讲，db.collection.find() 的第二个参数实现。
+```javascript
+db.movies.find({}, {field1:1,_id:0})
+```
+
+### Operators
+#### Comparison Operators
+$eq, $gt, $gte, $lt, $lte, $ne, $in, $nin
+```javascript
+db.collection.find({"field":{"$lt":100,"$gt":60}})
+```
+
+#### Element Operators
+$exists, $type
+```javascript
+db.collection.find({"tomato.meter":{"$exists":true}})
+```
+
+#### Logical Operators
+$or, $and 当查询条件中多次涉及同一字段时用$and，如 {$and:[{$grade:{$exists:true}}, {$grade:{$ne:null}}]}
+```javascript
+db.collection.find({$or: [{$field1:val1}, {field2:val2}] })
+db.collection.find({$and: [{$field1:val1}, {field1:val2}] })
+```
+
+#### Regex Operator
+$regex
+```javascript
+db.collection.find({"strfield":{$regex:/^Won\s.*/}})
+```
+
+#### Array Operators
+$all, $size, $elementMatch
+```javascript
+db.collection.find({actors:{$all:["actor1", "actor2", "actor3"]}})
+db.collection.find({actors:{$size:1}})
+boxOffice: [ { "country": "USA", "revenue": 41.3 },
+             { "country": "Australia", "revenue": 2.9 },
+             { "country": "UK", "revenue": 10.1 },
+             { "country": "Germany", "revenue": 4.3 },
+             { "country": "France", "revenue": 3.5 } ]
+db.collection.find({ boxOffice: { country: "UK", revenue: { $gt: 15 } } })
+# 会匹配以上字段，country和revenue不被限制在同一元素内
+db.collection.find({ boxOffice: {$elemMatch: { country: "UK", revenue: { $gt: 15 } } } })
+# country和revenue被限制在同一元素内，匹配失败
+```
+## Update
+### UpdateOne
+[Update Operators](https://docs.mongodb.com/v3.2/reference/operator/update/): $inc, $mul, $rename, $setOnInsert, $set, $unset, $min, $max, $currentDate
+```javascript
+db.movieDetails.updateOne({title: "The Martian"},
+                          { $set: { "awards" : {"wins" : 8,
+		                              "nominations" : 14,
+		                                "text" : "Nominated for 3 Golden Globes. Another 8 wins & 14 nominations." } } });
+```
+### Array Update
+[Array Update Operators](https://docs.mongodb.com/v3.2/reference/operator/update-array/): $addToSet, $pop, $pull, $pullAll, $push, $pushAll
+```javascript
+db.movieDetails.updateOne({title: "The Martian"},
+                          {$push: { reviews:
+                                    { $each: [
+                                        { rating: 0.5,
+                                          date: ISODate("2016-01-12T07:00:00Z"),
+                                          reviewer: "Yabo A.",
+                                          text: "i believe its ranked high due to its slogan 'Bring him Home' there is nothing in the movie, nothing at all ! Story telling for fiction story !"},
+                                        { rating: 5,
+                                          date: ISODate("2016-01-12T09:00:00Z"),
+                                          reviewer: "Kristina Z.",
+                                          text: "This is a masterpiece. The ending is quite different from the book - the movie provides a resolution whilst a book doesn't."}],
+				      $position: 0,
+                                      $slice: 5 
+				    }
+				}
+			})
+```
+$each 用于将列表中的文档作为单独的元素逐一插入，否则整个列表作为一个列表元素插入, $position:0 用于插入到列表前，$slice用于限定列表长度，详见文档
+
+### UpdateMany
+```javascript
+db.movieDetails.updateMany( { rated: null },
+                            { $unset: { rated: "" } } )
+```
+
+### Upsert
+要更新的文档不存在时插入创建新的文档
+```javascript
+db.movieDetails.updateOne(
+    {"imdb.id": detail.imdb.id},
+    {$set: detail},
+    {upsert: true});
+```
+
+### replaceOne
+_id字段不变替换文档内容
+```javascript
+db.movies.replaceOne(
+    {"imdb": detail.imdb.id},
+    detail);
+```
+
