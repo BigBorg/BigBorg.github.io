@@ -10,7 +10,7 @@ tags:
     - Mongodb
 ---
 # Mongodb University Courses Note
-Mongodb University的M101P: MongoDB for Developers与M102: MongoDB for DBAs课程第一周笔记  
+Mongodb University的M101P: MongoDB for Developers与M102: MongoDB for DBAs课程第二周笔记  
 [官方文档地址](https://docs.mongodb.com/v3.2/)  
 [api文档](http://api.mongodb.com)
 
