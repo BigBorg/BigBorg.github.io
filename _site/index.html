@@ -173,6 +173,33 @@
             ">
     			
 <div class="post-preview">
+    <a href="/2017/01/25/Mongodb_for_DBAs_Week2/">
+        <h2 class="post-title">
+            Mongodb for DBAs: Week2
+        </h2>
+        
+        <h3 class="post-subtitle">
+            CRUD & administrative commands
+        </h3>
+        
+        <div class="post-content-preview">
+            CRUD
+CRUD因在另一门课Mongodb for Developers: Week2笔记中基本覆盖，所以重复内容不再做笔记。也可参考官方文档。
+
+Bulk() operations and methods
+
+var bulk = db.items.initializeUnorderedBulkOp();
+bulk.insert({item:1})
+bulk.insert({item:2}...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Borg on January 25, 2017
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2017/01/23/mongodb-wk2-forDevelopers/">
         <h2 class="post-title">
             Mongodb for Developers: Week2
@@ -184,7 +211,7 @@
         
         <div class="post-content-preview">
             Mongodb University Courses Note
-Mongodb University的M101P: MongoDB for Developers与M102: MongoDB for DBAs课程第一周笔记
+Mongodb University的M101P: MongoDB for Developers与M102: MongoDB for DBAs课程第二周笔记
 官方文档地址
 api文档
 
@@ -361,30 +388,6 @@ Github Repo
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/2016/04/15/note-ml-course2-week4/">
-        <h2 class="post-title">
-            Regularization(Ridged Regression) & Cross Validation
-        </h2>
-        
-        <h3 class="post-subtitle">
-            Note: ml regression week4
-        </h3>
-        
-        <div class="post-content-preview">
-            Regularization
-上周已经讲了overfitting，那么当我们所有的数据量特别大的时候，即使有很多个特征模型也很难overfit。
-
-
-当模型overfit的时候，weights会变得很大，因此如果各个特征都很重要不可去除，可以通过减小weights来减弱overfitting的程度。那么如何衡量w是否过大？可以用w的绝对值相加或者用w的平方相加，注意不能直接把w相加，因为w可...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Borg on April 15, 2016
-    </p>
-</div>
-<hr>
-
 
 <!-- Pager -->
 
@@ -466,6 +469,8 @@ Github Repo
                                 <a href="/tags/#Mongodb" title="Mongodb" rel="2">
                                     Mongodb
                                 </a>
+                            
+                        
                             
                         
                     </div>
