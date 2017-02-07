@@ -150,7 +150,7 @@
                 <div class="site-heading">
                     <h1>Borg's Blog</h1>
                     <!--<hr class="small">-->
-                    <span class="subheading">Love R, Love python, Love data science.</span>
+                    <span class="subheading">Live as if you were to die tomorrow. Learn as if you were to live forever. </span>
                 </div>
             </div>
         </div>
@@ -172,6 +172,85 @@
                 postlist-container
             ">
     			
+<div class="post-preview">
+    <a href="/2017/02/06/mongodb-forDevelopers-wk4/">
+        <h2 class="post-title">
+            Mongdb for Developers: Week4
+        </h2>
+        
+        <h3 class="post-subtitle">
+            Performance
+        </h3>
+        
+        <div class="post-content-preview">
+            Performance
+本周的内容基本与上周Mongodb for DBAs: week3重复，重点和之前没有的再记一次好了。
+
+MMAPv1 vs wiredTiger
+相比于MMAPv1, wiredTiger支持
+- 文档级别锁，准确的说不叫锁，英文叫document level concurrency。
+- 压缩，wiredTiger自己决定内存的时候，哪些页需要从磁盘读出到内存哪些...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Borg on February 6, 2017
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2017/01/30/mongodb-for-DBAs-wk3/">
+        <h2 class="post-title">
+            Mongdb for DBAs: Week3
+        </h2>
+        
+        <h3 class="post-subtitle">
+            Performance
+        </h3>
+        
+        <div class="post-content-preview">
+            Storage Engine
+Mongodb 现有两个存储引擎，默认的是MMAPv1，可选的是WiredTiger。可以在启动数据库时指定。wiredTiger支持而MMAPv1不支持的特性有：文档级别锁，数据压缩。
+shell
+mongod --storageEngine wiredTiger
+
+
+具体存储的结构无图不好说，推荐阅读：MongoDB的存储结构及对空间使用率的影响。值得说的一...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Borg on January 30, 2017
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2017/01/30/mongodb-for-developers-wk3/">
+        <h2 class="post-title">
+            Mongdb for Developers: Week3
+        </h2>
+        
+        <h3 class="post-subtitle">
+            Schema Design & Blob
+        </h3>
+        
+        <div class="post-content-preview">
+            Schema Design
+mongodb区别于sql数据库，没有外键，支持内嵌文档。在设计数据库时既可以内嵌也可以分别创建不同的集合再进行连接，较为自由。内嵌的好处是提高磁盘读取效率。缺点是不能内嵌太多文档，否则会超过16MB的文档大小限制，还有如果内嵌导致大量重复数据则容易造成数据不一致。
+
+One to One
+一对一关系直接使用内嵌。
+
+One to Many
+一对多关系中，根据Ma...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Borg on January 30, 2017
+    </p>
+</div>
+<hr>
+
 <div class="post-preview">
     <a href="/2017/01/25/Mongodb_for_DBAs_Week2/">
         <h2 class="post-title">
@@ -331,63 +410,6 @@ Open ...
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/2016/05/01/Machine-Learning-Course-Materials/">
-        <h2 class="post-title">
-            回归模型公开课材料
-        </h2>
-        
-        <h3 class="post-subtitle">
-            University of Washington
-        </h3>
-        
-        <div class="post-content-preview">
-            最后两周懒得做笔记了，一张张截图好费时间。已经把pdf，ipython notebook，data都上传到github，ipython notebook还转换成了markdown文件方便阅读。
-Github Repo
-华盛顿大学的这门公开课真的很棒，很照顾新手，把用到的数学符号都解释了，同时又不会太水。比起约翰霍普金斯的数据科学偏向理论，后者的回归模型主要讲的怎么用，而这门则是深入讲解回归模...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Borg on May 1, 2016
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2016/04/28/Rpackage-shiny/">
-        <h2 class="post-title">
-            小米手环R包与shiny应用
-        </h2>
-        
-        <div class="post-content-preview">
-            花了好久写好的R包与shiny应用。R包可以在通过github安装，repo上也有安装说明，安装完成后运行runExample()能够调出本地版本的shiny app，app上的使用说明更加明确。不会R语言的可以直接无视package，有shinyio上托管的应用，可以自己上传文件查看。注意上传文件是将目录 /data/data/com.xiaomi.hm.health/databases ...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Borg on April 28, 2016
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2016/04/28/things-to-do-after-installing-Ubuntu/">
-        <h2 class="post-title">
-            安装Ubuntu后要做的几件事
-        </h2>
-        
-        <div class="post-content-preview">
-            安装Ubuntu之后做的几件事：
-对的，我换电脑了！换了个8G内存宏碁的笔记本，这样就能搞得起某些数据分析的算法了。
-买来新电脑第一件事当然是装系统啦，但是装完系统后好多软件需要重新安装。虽然说Ubuntu可以直接导出软件源和已安装软件列表，但是发现自己好多软件就不是用apt-get安装的。所以在此记录下本次装系统所做修改，以备不时之需。
-首先是Ubuntu版本的选择，现在Ubuntu已经有...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Borg on April 28, 2016
-    </p>
-</div>
-<hr>
-
 
 <!-- Pager -->
 
@@ -466,7 +488,7 @@ Github Repo
                             
                         
                             
-                                <a href="/tags/#Mongodb" title="Mongodb" rel="2">
+                                <a href="/tags/#Mongodb" title="Mongodb" rel="5">
                                     Mongodb
                                 </a>
                             

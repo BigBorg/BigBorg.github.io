@@ -36,6 +36,7 @@ db.collection.dropIndex("indexname")
 
 ## Unique index
 唯一索引，可以对单一键索引也可以使组合索引。_id 字段就是unique index。当key被索引为unique时，不能有重复值，包括空，即**不能有两个文档都不具有该字段**，如果集合内只有少数文档具有该字段，则可以设置sparse选项为true即可同有多个文档都不具有该字段。
+
 ```javascript
 db.collection.ensureIndex({key1:1, key2:1}, {unique:true, sparse:false})
 ```
@@ -71,7 +72,7 @@ db.collection.find({$text: {$search: "keyword1 keyword2"}}, {score:{$meta:"textS
 ```
 
 ## Background index creation
-索引创建在primary可以在后台运行，secondary则不能。后台运行相对较慢，但创建过程中集合仍可读写。前台运行更适合较大数据集，效率更高，更高压缩。
+索引创建在primary可以在后台运行，secondary则不能。后台运行相对较慢，但创建过程中集合仍可**读写**。
 
 ```javascript
 db.collection.ensureIndex({field:1},{background:true]) # 该行代码不会立即返回，虽然是后台运行，该行代码仍需要等待，后台指的此时其它连接仍可对集合读写。
@@ -86,7 +87,13 @@ db.collection.explain("allPlansExecution").find({...})  # 选出效率最佳的�
 ```
 
 # Covered Query
-最近运行过的查找再次查找时不需要搜索文档
+通过索引即可获取到全部数据的查找，无需获取文档本身。如有索引{i:1,j:1,k:1}的集合中：
+
+```javascript
+db.collection.find({i:2,j:4,k:5}, {i:1,j:1,k:1});	# not covered: need to fetch _id from document
+db.collection.find({i:2,j:4,k:5}, {_id:0});		# not covered: documents might have other keys other than i,j,k, thus the database need to scan over documents.
+db.collection.find({i:2,j:4,k:5}, {_id:0,i:1,j:1,k:1}); # covered: project exact keys in filter
+```
 
 # Read & Write Recap 
 索引会增加插入的时间，但会减少查找的时间。导入数据时，先导入数据再创建索引比先创建索引再导入数据快。
