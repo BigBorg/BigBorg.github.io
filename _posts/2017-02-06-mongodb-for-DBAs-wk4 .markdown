@@ -57,7 +57,7 @@ cfg = {
 	]
 }
 re.initiate(cfg)  # 初始化副本集
-rs.add("borg-TravelMate-P258-MG:27002")  # 或者可以直接这样添加成员
+rs.add("borg-TravelMate-P258-MG:27002")  # 或者可以直接这样添加成员,不过仍然需要初始化，只是可以不提供配置。
 rs.isMaster()
 rs.stepDown()  # 主数据库下线，可以提供下线秒数，不能用于从数据库。
 rs.reconfig(cfg)
