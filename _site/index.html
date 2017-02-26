@@ -173,6 +173,83 @@
             ">
     			
 <div class="post-preview">
+    <a href="/2017/02/21/mongodb-forDevelopers-w6/">
+        <h2 class="post-title">
+            Mongdb for Developers: Week6
+        </h2>
+        
+        <h3 class="post-subtitle">
+            Application Engine
+        </h3>
+        
+        <div class="post-content-preview">
+            Connecting to a Replica Set from Pymongo
+read_pref = pymongo.read_preferences.ReadPreference.SECONDARY
+connection = pymongo.MongoClient()  # for default localhost:port
+connection = pymongo.MongoCli...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Borg on February 21, 2017
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2017/02/21/mongodb-for-DBAs-wk6/">
+        <h2 class="post-title">
+            Mongdb for DBAs: Week6
+        </h2>
+        
+        <h3 class="post-subtitle">
+            Scalability
+        </h3>
+        
+        <div class="post-content-preview">
+            Sharding &amp; Data Distribution
+shard key 用于决定文档存于哪个 shard, 分为 range based 和 hash based。以 range based 为例，一个[min, max]范围形成一个chunk，取一个中间的数字将原来的区块分为两个（splite），再把新分出来的区块发送（migration）给其它shard。
+
+Running...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Borg on February 21, 2017
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2017/02/07/mongodb-for-DBAs-wk4/">
+        <h2 class="post-title">
+            Mongdb for DBAs: Week4
+        </h2>
+        
+        <h3 class="post-subtitle">
+            Replication
+        </h3>
+        
+        <div class="post-content-preview">
+            Replication
+
+Why replication?
+
+  high availability (when server failure occurs)
+  durability
+  scaling in some situations
+  disaster recovery
+
+
+Asynchronous vs syncronous replication
+In asynchronou...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Borg on February 7, 2017
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2017/02/06/mongodb-forDevelopers-wk4/">
         <h2 class="post-title">
             Mongdb for Developers: Week4
@@ -347,69 +424,6 @@ mongod --dbpath datadi...
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/2016/09/29/mysql-notes/">
-        <h2 class="post-title">
-            Borg的mysql笔记
-        </h2>
-        
-        <div class="post-content-preview">
-            数据库
-create database [IF NOT EXISTS] &lt;数据库名&gt;
-USE &lt;数据库名&gt;
-ALTER DATABASE [数据库名] {[DEFAULT] CHARACTER SET &lt;字符集名&gt; | [DEFAULT] COLLATE &lt;校对规则名&gt;}
-DROP DATABASE [IF EXISTS] &lt;数据库名&g...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Borg on September 29, 2016
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2016/09/12/Scrapy-Pythonjobs/">
-        <h2 class="post-title">
-            Python 招聘信息爬取及可视化
-        </h2>
-        
-        <div class="post-content-preview">
-            自学python的大四狗发现校招招python的屈指可数，全是C++、Java、PHP，但看了下社招岗位还是有的。于是为了更加确定有多少可能找到工作，就用python写了个爬虫爬取招聘信息，数据处理，最后用R语言进行可视化呈现。项目地址：Github Repo 求关注。
-
-scrapy爬虫
-python语言简单强大，虽然效率比不上C++这类编程语言，但因为没有了繁琐严格的语法，能让程序员更加...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Borg on September 12, 2016
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2016/06/28/openCV/">
-        <h2 class="post-title">
-            OpenCV installation
-        </h2>
-        
-        <div class="post-content-preview">
-            openCV 计算机视觉库Ubuntu 16 kylin下的安装过程，其实从链接搬运的，只是自己过了一遍有些不同的用汉语标注了。
-第三步libtiff4升级到5了
-第七步pip已经有了就不用看了
-第八步conda也可以创建虚拟python环境，所以暂且用conda
-第十一步用conda把cv包装入虚拟的环境，最后cource activate cv启用虚拟环境
-
-Step 1:
-
-Open ...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Borg on June 28, 2016
-    </p>
-</div>
-<hr>
-
 
 <!-- Pager -->
 
@@ -488,7 +502,7 @@ Open ...
                             
                         
                             
-                                <a href="/tags/#Mongodb" title="Mongodb" rel="5">
+                                <a href="/tags/#Mongodb" title="Mongodb" rel="8">
                                     Mongodb
                                 </a>
                             
@@ -515,7 +529,7 @@ Open ...
                             
                             
                             <li>
-                                <a target="_blank" href="https://www.zhihu.com/people/Borg-35">
+                                <a target="_blank" href="https://www.zhihu.com/people/bigborg">
                                     <span class="fa-stack fa-lg">
                                         <i class="fa fa-circle fa-stack-2x"></i>
                                         <i class="fa  fa-stack-1x fa-inverse">知</i>
@@ -558,7 +572,7 @@ Open ...
                     <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
                     
                     <li>
-                        <a target="_blank" href="https://www.zhihu.com/people/Borg-35">
+                        <a target="_blank" href="https://www.zhihu.com/people/bigborg">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa  fa-stack-1x fa-inverse">知</i>
