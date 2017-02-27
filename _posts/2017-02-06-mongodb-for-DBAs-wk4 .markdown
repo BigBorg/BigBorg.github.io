@@ -44,7 +44,7 @@ cfg = {
 	"members" : [
 		{
 			"_id" : 0,
-			"host" : "borg-TravelMate-P258-MG:27001"  # 此处禁止使用localhost，可以通过rs.status查看获取。
+			"host" : "borg-TravelMate-P258-MG:27001"  
 		},
 		{
 			"_id" : 1,
