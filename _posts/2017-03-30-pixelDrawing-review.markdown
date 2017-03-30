@@ -10,7 +10,7 @@ tags:
 ---
 # Ionic
 
-开头推销下刚写的应用啊，详见[github issue](https://github.com/driftyco/ionic/issues/5701)。大概就是底下这样的：  
+开头推销下刚写的应用啊，详见[博文](https://bigborg.github.io/2017/03/29/ionic-pixelDrawing/)。大概就是底下这样的：  
 ![drawing](http://7xshuq.com1.z0.glb.clouddn.com/blog/img/2079268412.jpg)  
 ![svgcustomize](http://7xshuq.com1.z0.glb.clouddn.com/blog/img/947958209.jpg)  
 ![detail](http://7xshuq.com1.z0.glb.clouddn.com/blog/img/1443131507.jpg)  
