@@ -173,6 +173,29 @@
             ">
     			
 <div class="post-preview">
+    <a href="/2017/04/11/WeiboCraw/">
+        <h2 class="post-title">
+            微博社交网络图：爬虫+可视化
+        </h2>
+        
+        <div class="post-content-preview">
+            微博爬虫 + 社交网络图可视化
+项目地址：WeiboSocialNetwork
+先展示下结果再来解释代码：
+首先有个R语言生成的 html
+
+
+  里面可以看到爬取的数据大致信息，比如爬取的有5017个用户，而0到1,1到2级的关注关系一共有5784个。
+  男性用户5003,女性13,还有个应该是空白的字符串。天，基本全是男性啊。。。就算扩展到二级而全是男性啊。。。被这比例吓到了，不过后面...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Borg on April 11, 2017
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2017/03/30/pixelDrawing-review/">
         <h2 class="post-title">
             像素涂鸦应用总结之Ionic
@@ -181,14 +204,14 @@
         <div class="post-content-preview">
             Ionic
 
-开头推销下刚写的应用啊，详见github issue。大概就是底下这样的：
+开头推销下刚写的应用啊，详见博文。大概就是底下这样的：
 
 
 
 
 正式开始介绍Ionic把。Ionic是一个跨平台的混合应用开发框架，基于Angularjs 。目前有第1版和第2版，分别基于 Angularjs 1和2。
 
-如果是普通的应用，展示下信息，正常的应用交互，还是尽量使用新版Ionic 2。Ionic 2采用了typescript，因为扩展了java...
+如果是普通的应用，展示下信息，正常的应用交互，还是尽量使用新版Ionic 2。Ionic 2采用了typescript，因为扩展了javascript，提供了...
         </div>
     </a>
     <p class="post-meta">
@@ -421,33 +444,6 @@ mongod --storageEngine wiredTiger
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/2017/01/30/mongodb-for-developers-wk3/">
-        <h2 class="post-title">
-            Mongdb for Developers: Week3
-        </h2>
-        
-        <h3 class="post-subtitle">
-            Schema Design & Blob
-        </h3>
-        
-        <div class="post-content-preview">
-            Schema Design
-mongodb区别于sql数据库，没有外键，支持内嵌文档。在设计数据库时既可以内嵌也可以分别创建不同的集合再进行连接，较为自由。内嵌的好处是提高磁盘读取效率。缺点是不能内嵌太多文档，否则会超过16MB的文档大小限制，还有如果内嵌导致大量重复数据则容易造成数据不一致。
-
-One to One
-一对一关系直接使用内嵌。
-
-One to Many
-一对多关系中，根据Ma...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Borg on January 30, 2017
-    </p>
-</div>
-<hr>
-
 
 <!-- Pager -->
 
@@ -520,6 +516,10 @@ One to Many
                             
                         
                             
+                                <a href="/tags/#Visualization" title="Visualization" rel="2">
+                                    Visualization
+                                </a>
+                            
                         
                             
                         
@@ -537,6 +537,8 @@ One to Many
                                 <a href="/tags/#Ionic" title="Ionic" rel="3">
                                     Ionic
                                 </a>
+                            
+                        
                             
                         
                     </div>
