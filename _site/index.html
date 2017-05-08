@@ -173,6 +173,30 @@
             ">
     			
 <div class="post-preview">
+    <a href="/2017/05/08/celery-django/">
+        <h2 class="post-title">
+            Celery+Django: 异步邮箱验证
+        </h2>
+        
+        <div class="post-content-preview">
+            其实。。。这篇教程不包括邮箱验证的，不过我有实现个 celery + django 的邮箱验证博客，问末附 repo 。
+
+Web 应用中的长时操作如果没有异步实现会阻塞代码运行，用户需要等待较长时间才能收到响应。而像 Celery 这样的异步工具就能很好解决这类问题。本文将带你了解 Django 框架下的 Celery 使用。
+
+安装
+
+Celery
+
+Celery 使用 pip 安装即可...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Borg on May 8, 2017
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2017/05/03/django-channels/">
         <h2 class="post-title">
             Django Channels 实时在线用户列表
@@ -402,29 +426,6 @@ connection = pymongo.MongoCli...
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/2017/02/21/mongodb-for-DBAs-wk6/">
-        <h2 class="post-title">
-            Mongdb for DBAs: Week6
-        </h2>
-        
-        <h3 class="post-subtitle">
-            Scalability
-        </h3>
-        
-        <div class="post-content-preview">
-            Sharding &amp; Data Distribution
-shard key 用于决定文档存于哪个 shard, 分为 range based 和 hash based。以 range based 为例，一个[min, max]范围形成一个chunk，取一个中间的数字将原来的区块分为两个（splite），再把新分出来的区块发送（migration）给其它shard。
-
-Running...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Borg on February 21, 2017
-    </p>
-</div>
-<hr>
-
 
 <!-- Pager -->
 
@@ -523,9 +524,11 @@ Running...
                             
                         
                             
-                                <a href="/tags/#Django" title="Django" rel="2">
+                                <a href="/tags/#Django" title="Django" rel="3">
                                     Django
                                 </a>
+                            
+                        
                             
                         
                             
