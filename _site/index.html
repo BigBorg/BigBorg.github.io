@@ -186,6 +186,29 @@
             ">
     			
 <div class="post-preview">
+    <a href="/2017/06/26/robotparser-session/">
+        <h2 class="post-title">
+            robotparser 与 requests 结合使爬虫遵守 robots.txt 协议
+        </h2>
+        
+        <div class="post-content-preview">
+            什么是 robots.txt ?
+robots.txt 文件放置在网站根目录下，定义了什么样的客户端（web服务器以User-Agent识别客户端）可以访问的资源有哪些，不能访问的资源有哪些。以百度的 robots.txt 为例，如下:
+
+User-agent: Baiduspider
+Disallow: /baidu
+Disallow: /s?
+Disallow: /ulink?
+Disa...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Borg on June 26, 2017
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2017/05/08/celery-django/">
         <h2 class="post-title">
             Celery+Django: 异步邮箱验证
@@ -416,29 +439,6 @@ authentication
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/2017/02/21/mongodb-forDevelopers-w6/">
-        <h2 class="post-title">
-            Mongdb for Developers: Week6
-        </h2>
-        
-        <h3 class="post-subtitle">
-            Application Engine
-        </h3>
-        
-        <div class="post-content-preview">
-            Connecting to a Replica Set from Pymongo
-read_pref = pymongo.read_preferences.ReadPreference.SECONDARY
-connection = pymongo.MongoClient()  # for default localhost:port
-connection = pymongo.MongoCli...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Borg on February 21, 2017
-    </p>
-</div>
-<hr>
-
 
 <!-- Pager -->
 
@@ -505,6 +505,10 @@ connection = pymongo.MongoCli...
                             
                         
                             
+                                <a href="/tags/#Python" title="Python" rel="2">
+                                    Python
+                                </a>
+                            
                         
                             
                         
@@ -534,6 +538,10 @@ connection = pymongo.MongoCli...
                                 </a>
                             
                         
+                            
+                                <a href="/tags/#Crawler" title="Crawler" rel="2">
+                                    Crawler
+                                </a>
                             
                         
                             
