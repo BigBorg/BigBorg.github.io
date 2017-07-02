@@ -1,0 +1,197 @@
+---
+layout: 	post
+title:		"reload 实现热更新"
+header-img:	"img/post-bg-deeplearning.jpg"
+date:		2017-07-02
+author: 	"Borg"
+catalog:	true
+tags:
+    - Python
+---
+
+# 什么是 reload
+当我们在 python 的交互模式下测试某个类的时候，发现这个类的某个方法有错误进行了修改，而这个方法的输入又依赖于之前在交互模式下的好几个操作，这时要怎么办呢？如果重启交互模式，那么该方法依赖的操作就得重新再来一次，相当麻烦。这时 reload 就能派上用场了。 reload 内建方法用于重新导入一个模块，如果相应的python脚本代码被修改了，用 reload 重新导入后就是修改后的新模块而不需要重启整个程序了。
+
+# 热更新
+假设你有一个网站有不少的用户量，并时不时需要更新新功能。你不希望在更新新代码的时候把整个网站停掉重启进程，因为这期间可能会流失一部分用户，于是你就在想能不能只需要把旧代码替换成新代码无需重启进程就实现更新呢？ reload 就可以实现这个功能。
+
+# 待更新模块
+在项目文件夹下我们创建个 long_op.py 文件，该文件代表了需要被更新的模块，其中的类 LongOp 模拟长时操作。
+
+    #coding:utf8
+    import time
+    import threading
+    
+    class LongOp(threading.Thread):
+        def __init__(self, id):
+            super(LongOp, self).__init__()
+            self.id = id
+    
+        def run(self):
+            for i in range(10):
+                print("New long op {} running.".format(self.id))
+                time.sleep(1)
+            print("New long op {} end.".format(self.id))
+
+我们将 long_op.py 备份为 long_op.old.py ， 并创建文件 long_op.new.py 作为修改后的新代码，用于在程序运行时替换 long_op.py 文件。 long_op.new.py 代码如下：
+
+    #coding:utf8
+    import time
+    import threading
+    
+    class LongOp(threading.Thread):
+        def __init__(self, id):
+            super(LongOp, self).__init__()
+            self.id = id
+    
+        def run(self):
+            for i in range(10):
+                print("New long op {} running.".format(self.id))
+                time.sleep(1)
+            print("New long op {} end.".format(self.id))
+
+新旧代码只有输出有区别。
+
+# 文件监控
+当更新代码时我们需要知道文件发生了修改，才能在适当的时机动态加载修改后的新模块。 新建 file_monitor.py 文件并粘贴以下代码：
+
+    #coding:utf8
+    import os
+    import threading
+    import time
+    import sys
+    
+    EXIT = False
+    
+    class FileMonitor(threading.Thread):
+        def __init__(self, file2module=None, interval=3):
+            '''
+            
+            :param files: files that need to be monitored
+            :param modules:  objs that needs to be reloaded when corresponding files changes
+            :param interval: 
+            '''
+            super(FileMonitor, self).__init__()
+            if not file2module:
+                file2module = {}
+            self._lock = threading.Lock()
+            self._file2module = file2module
+            self._interval = interval
+            self._modified_time = {}  # file to last modified time to determine if reload is needed
+            for file in self._file2module:
+                self._modified_time[file] = self.get_modified_time(file)
+    
+        @staticmethod
+        def get_modified_time(file):
+            state = os.stat(file)
+            return state.st_mtime
+    
+        def run(self):
+            try:
+                global EXIT
+                EXIT = True
+                while EXIT:
+                    with self._lock:
+                        for file in self._file2module:
+                            if self.get_modified_time(file) != self._modified_time[file]:
+                                print("Reload module")
+                                reload(self._file2module[file])
+                                self._modified_time[file] = self.get_modified_time(file)
+                    time.sleep(self._interval)
+            except KeyboardInterrupt as error:
+                print("KeyboardInterrupt caught")
+                sys.exit(0)
+    
+        def add_file(self, file, module):
+            with self._lock:
+                self._file2module[file] = module
+                self._modified_time[file] = self.get_modified_time(file)
+    
+        def stop_monitor(self):
+            global EXIT
+            EXIT = False
+
+FileMonitor 实例会保存一份文件名映射到模块的字典_file2module，以及文件名映射到最后修改时间的字典_modified_time。 每隔 interval 秒检查一遍字典内的文件是否发生了修改，如果发生修改就重新载入对应模块。除了在初始化实例时传入 file2module 来指定需要监控的文件外还可以在实例化后通过方法 add_file 来增加需要监控的文件。 run 方法则为监督文件。
+
+# 调度
+新建文件 main.py， 复制粘贴以下代码：
+
+    #coding:utf8
+    import threading
+    import time
+    import random
+    from file_monitor import FileMonitor
+    import long_op  # Can't do 'from long_op import LongOp' here, because reload only works on module level
+    
+    fm = FileMonitor()
+    fm.add_file("long_op.py", long_op)
+    fm.start()
+    
+    resource = threading.BoundedSemaphore(2)
+    
+    threads = []
+    lock = threading.Lock()
+    EXITTHREADS = False
+    
+    def start_thread():
+        while True:
+            resource.acquire()
+            print("Start new thread")
+            t = long_op.LongOp(random.randint(0,9))
+            with lock:
+                threads.append(t)
+                t.start()
+            if EXITTHREADS:
+                break
+    
+    def clear_threads():
+        while True:
+            with lock:
+                for i, ele in enumerate(threads):
+                    if not ele.isAlive():
+                        threads.pop(i)
+                        resource.release()
+                        print("Release a thread")
+            time.sleep(3)
+            if EXITTHREADS:
+                break
+    
+    
+    t1 = threading.Thread(target=start_thread)
+    t2 = threading.Thread(target=clear_threads)
+    t1.start()
+    t2.start()
+    t1.join()
+    t2.join()
+
+main.py 中实例化 FileMonitor， 添加待监控的文件 “long_op.py” 并在线程中运行监控逻辑，一旦被监控的文件发生了修改就会重新导入相应模块。接着使用了 BoundedSemaphore 和两个分别实现创建线程运行长时操作和清楚运行结束的长时操作的线程 start_thread 和 clear_threads，这两个线程会使得运行期间有两个 LongOp 长时操作线程不停输出，用以模拟业务逻辑。
+
+# 运行 & 更新
+
+### 启动程序
+
+python main.py 将会启动程序，如下图将会看到有两个线程不断输出，其输出中带有 old 标识其为未更新的旧代码生成的实例。
+
+![enter image description here][1]
+
+### 替换程序
+我们通过 cp long_op.new.py long_op.py 来覆盖旧代码。 当新代码被加载时会看到输出“Reload module”。当重新加载模块后旧的 LongOp 实例还会继续运行，其还是旧的实例，而其实此时 long_op 模块已经被更新了，内部的 LongOp 类也是新的了，只是旧的实例还能运行直到它停止被销毁。在此之后再用 LongOp 类生成的实例就是新的实例了，在此两个旧实例被销毁的时间不同，还出现了旧实例和新实例并存的情况，即截图里 Old 和 New 间隔输出那段。
+
+![enter image description here][2]
+
+# 缺点 & 其它实现
+
+ 1. 因为 reload
+    方法只能重新载入整个模块，不能部分地载入模块内的内容，要支持这样的动态更新就需要使用模块化编程，即从需要更新的文件导入
+    只能整个模块的导入而不能只从中导入一个类或函数或变量。对应本文即不能 from long_op  import LongOp 而只能 import long_op 并且之后都使用 long_op.LongOp 的方式使用 LongOp 类。
+
+ 2. reload 会导致旧实例和新类，新对象同时存在的情况，如果这是在旧类里使用了 isinstance 或者 super
+    就会导致不可描述的错误和结果。因为预期 isinstance 和 super
+    参数为当前实例对应的类，即旧类，但此时旧类已经不存在，被新类覆盖了。
+
+还有其它方法实现动态更新，即直接读取脚本内容，使用 eval 来执行代码。在 github 上看到个如此实现的项目 [reloadr][3], 具体还没细看。 对于本文的示范，有什么改进的也欢迎推送到我的 [github repo][4]。
+
+  [1]: https://github.com/BigBorg/codeBox/blob/master/dynamic_reload/img/startmain.png?raw=true
+  [2]: https://github.com/BigBorg/codeBox/blob/master/dynamic_reload/img/reload.png?raw=true
+  [3]: https://github.com/hoh/reloadr
+  [4]: https://github.com/BigBorg/codeBox
