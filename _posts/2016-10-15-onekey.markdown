@@ -15,30 +15,30 @@ tags:
 
 ### 首页
 这是首页，提供了个测试帐号。导航栏右上角的图标登录后会变成用户名和登出，Django 的模板使得这点实现变得简单多了。。。
-![首页](http://7xshuq.com1.z0.glb.clouddn.com/blog/img/onekey1.png)
+![首页](http://49.234.222.112:8080/static/blog/img/onekey1.png)
 
 ### 注册
 注册时候是需要验证邮箱的！！！会收到来自网站的验证邮箱哦，是不是很帅，哈哈。还得感谢开源项目 [django-users](https://github.com/mishbahr/django-users2) 实现了这点。不过该开源项目注册时只能用email，也只能用email登录，而且默认的界面真的很丑很丑很丑，要拿来用还得各种改源码。不过确实很好用的。
 
 ### 密码列表
 登录后会跳转到密码列表。
-![列表](http://7xshuq.com1.z0.glb.clouddn.com/blog/img/onekey2.png)
+![列表](http://49.234.222.112:8080/static/blog/img/onekey2.png)
 
 ### 加密
 点击每条记录都会跳转到加密页面，为了方便加上了个按钮，点击按钮可以隐藏或者显示密码。
-![加密](http://7xshuq.com1.z0.glb.clouddn.com/blog/img/onekey3.png)
+![加密](http://49.234.222.112:8080/static/blog/img/onekey3.png)
 
 ### 更改密码 Update
 还在为取密码发愁？通过更新 timestamp 可以自动更改密码，再也不用绞尽脑汁取密码了。为了避免意外，还特地放上了旧的密码和新的密码，方便修改密码的时候用，不过退出该界面后旧密码就无法得到了哦。
-![更新密码](http://7xshuq.com1.z0.glb.clouddn.com/blog/img/onekey4.png)
+![更新密码](http://49.234.222.112:8080/static/blog/img/onekey4.png)
 
 ### 更改备注信息 Modify
 Modify 与 Update 的区别在于 Modify 修改的信息只是便于用户标识密码，并不会影响最后加密后的密码。
-![Modify](http://7xshuq.com1.z0.glb.clouddn.com/blog/img/onekey5.png)
+![Modify](http://49.234.222.112:8080/static/blog/img/onekey5.png)
 
 ### 删除 Delete
 删除，不用解释了把。
-![Delete](http://7xshuq.com1.z0.glb.clouddn.com/blog/img/onekey6.png)
+![Delete](http://49.234.222.112:8080/static/blog/img/onekey6.png)
 
 ---
 以下就总结下接触到的技术和问题吧:

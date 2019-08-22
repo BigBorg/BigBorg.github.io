@@ -15,7 +15,7 @@ tags:
 
 演示视频 v1.2.1：
 
-<video src="http://7xshuq.com1.z0.glb.clouddn.com/blog/video/pixelDrawing-demo-v1.2.1.mp4" controls="controls">
+<video src="http://49.234.222.112:8080/static/blog/video/pixelDrawing-demo-v1.2.1.mp4" controls="controls">
 您的浏览器不支持 video 标签。
 </video>
 

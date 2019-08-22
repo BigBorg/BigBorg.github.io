@@ -61,10 +61,10 @@ codingforentrepreneur 的代码是有 bug 的， 以下是我发现的：
 
 我的版本中以上 bug 都补上了，slug使用了中文拼音，markdown 使用 js 转换，权限只是几处or改成and。并且我使用了mysql数据库，python3 需要安装mysqlclient， requirement文件在代码仓库里。
 
-  [1]: http://7xshuq.com1.z0.glb.clouddn.com/img/blog/home.png
-  [2]: http://7xshuq.com1.z0.glb.clouddn.com/img/blog/footer.png
-  [3]: http://7xshuq.com1.z0.glb.clouddn.com/img/blog/detail.png
-  [4]: http://7xshuq.com1.z0.glb.clouddn.com/img/blog/comment.png
-  [5]: http://7xshuq.com1.z0.glb.clouddn.com/img/blog/genericFK.png
-  [6]: http://7xshuq.com1.z0.glb.clouddn.com/img/blog/create_post.png
-  [7]: http://7xshuq.com1.z0.glb.clouddn.com/img/blog/API.png
+  [1]: http://49.234.222.112:8080/static/img/blog/home.png
+  [2]: http://49.234.222.112:8080/static/img/blog/footer.png
+  [3]: http://49.234.222.112:8080/static/img/blog/detail.png
+  [4]: http://49.234.222.112:8080/static/img/blog/comment.png
+  [5]: http://49.234.222.112:8080/static/img/blog/genericFK.png
+  [6]: http://49.234.222.112:8080/static/img/blog/create_post.png
+  [7]: http://49.234.222.112:8080/static/img/blog/API.png

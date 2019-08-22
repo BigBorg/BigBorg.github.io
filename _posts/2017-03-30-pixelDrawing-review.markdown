@@ -11,9 +11,9 @@ tags:
 # Ionic
 
 开头推销下刚写的应用啊，详见[博文](https://bigborg.github.io/2017/03/29/ionic-pixelDrawing/)。大概就是底下这样的：  
-![drawing](http://7xshuq.com1.z0.glb.clouddn.com/blog/img/2079268412.jpg)  
-![svgcustomize](http://7xshuq.com1.z0.glb.clouddn.com/blog/img/947958209.jpg)  
-![detail](http://7xshuq.com1.z0.glb.clouddn.com/blog/img/1443131507.jpg)  
+![drawing](http://49.234.222.112:8080/static/blog/img/2079268412.jpg)  
+![svgcustomize](http://49.234.222.112:8080/static/blog/img/947958209.jpg)  
+![detail](http://49.234.222.112:8080/static/blog/img/1443131507.jpg)  
 
 正式开始介绍Ionic把。Ionic是一个跨平台的混合应用开发框架，基于Angularjs 。目前有第1版和第2版，分别基于 Angularjs 1和2。
 
