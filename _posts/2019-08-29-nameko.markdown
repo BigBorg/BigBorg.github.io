@@ -135,12 +135,12 @@ import logging
 from weakref import WeakKeyDictionary
 from nameko.dependency_providers import DependencyProvider
 
-log = logging.getLogger(<u>__</u>name<u>__</u>)
+log = logging.getLogger(__name__)
 
 
 class LoggingDependency(DependencyProvider):
 
-    def <u>__</u>init<u>__</u>(self):
+    def __init__(self):
         self.timestamps = WeakKeyDictionary()
 
     def worker_setup(self, worker_ctx):
