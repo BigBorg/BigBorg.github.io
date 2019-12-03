@@ -1,0 +1,64 @@
+---
+layout: 	post
+title:		"python GIL 缺陷思考"
+header-img:	"img/post-bg-2016.jpg"
+date:		2019-11-12
+author: 	"Borg"
+catalog:	true
+tags:
+    - Python
+    - Go
+---
+
+python 开发者都知道 python 由于 GIL(Global Interpretor Lock) 的限制，开出的线程无法使用多核 cpu，只适合处理 IO 密集型任务而不适合计算密集型。当需要处理计算密集型任务时，只能通过多进程来利用多核cpu的运算能力。通过合理使用线程、进程可以弥补 GIL 的不足，但是我最近遇到个用 python 无法做到内存、性能兼顾的问题。
+
+给定基于统计的文本分类模型（fasttext），需要对模型的训练、文本分类进行封装，产出 web 系统。要求能够在页面上上传训练数据训练新模型，能够选择已有的模型，上传文件，对文件内每一行数据进行分类，最终将原文件拆分成多个类别。分类本身是个计算密集型任务，python下为利用多核 cpu 只能开启多进程进行处理，然而模型对象无法在多进程间共享，只能每个进程都读入一份模型到内存中使用。如果开4个进程，内存中就要放4份模型，内存占用较高。统计类模型内部数据包含字符串数据，不像神经网络模型可以通过共享内存实现多进程间使用同一份模型。
+
+这问题在其他没有 GIL 限制的语言下则不存在，以 Golang 为例。首先需要测试使用 goroutine 并行处理时能否使用多核 cpu 计算资源，其次测试 goroutine 内使用的是同一份模型，不需要在内存中存储多份。
+
+1. 测试 goroutine 并行的代码如下：
+
+```
+package main
+
+import "time"
+
+func loop(index int) {
+	for {
+	}
+}
+
+func main() {
+	go loop(1)
+	go loop(2)
+	time.Sleep(30 * time.Second)
+}
+```
+编译运行以上代码，运行期间通过 top 命令查看进程 cpu 使用率，在多核系统下能看到该进程的 cpu 使用率为 200% ，即确实使用了多核计算资源。
+
+2. 测试模型只需一份代码如下：
+
+```
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+var a int32 = 1
+
+func printAddress() {
+	fmt.Println(&a)
+}
+
+func main() {
+	go printAddress()
+	go printAddress()
+	go printAddress()
+	time.Sleep(5 * time.Second)
+}
+```
+打印出来的全局变量 a 的地址是不变的，假设 a 是模型，那么就可以在多个 goroutine 内使用同一份模型。
+
+以上只是说明 python GIL 在某些场景下确实难以通过系统设计来弥补，而在其他语言则没有这种问题。但是这并不能否定 python 是优秀的语言，毕竟 python 开发效率相当高，第三方库齐全，像上面提到的 fasttext 模型就还没有 go 语言版本。
